@@ -9,10 +9,12 @@
 header: "&aAnother&4Tablist&aPlugin\n &1Welcome to &6Server.com\n{date} {time2}"
 footer: "&6Check out our website  >> &aexample.com\n&6Online: {players}"
 
+# Wiki  https://github.com/adiko01/AnotherTablistPlugin/wiki
+
 # English manuel below
 
 # Unter header kann der Text für über der Tablist eingetragen werden
-# Unter footer der ext für drunter
+# Unter footer der Text für drunter
 # Benutze die normalen Minecraft Farbcodes (https://minecraft.fandom.com/de/wiki/Formatierungscodes#Farbcodes)
 # Benutze \n für einen Zeilenumbruch
 # Platzhalter
