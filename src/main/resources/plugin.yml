@@ -4,3 +4,13 @@ main: de.adiko01.anothertablistplugin.AnotherTablistPlugin
 api-version: 1.19
 authors: [ adiko01 ]
 website: https://github.com/adiko01
+commands:
+  AnotherTablistPlugin:
+    description: Displays the Plugin Name and Version
+    aliases: atp
+    permission: AnotherTablistPlugin.about
+    permission-message: You do not have /<permission>
+permissions:
+  AnotherTablistPlugin.about:
+    description: Allows /atp
+    default: op

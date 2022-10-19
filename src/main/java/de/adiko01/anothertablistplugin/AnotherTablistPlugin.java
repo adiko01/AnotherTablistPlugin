@@ -1,11 +1,13 @@
 package de.adiko01.anothertablistplugin;
 
+import de.adiko01.anothertablistplugin.commands.AboudCommand;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -18,7 +20,15 @@ public final class AnotherTablistPlugin extends JavaPlugin {
 
     public static AnotherTablistPlugin instance;
     public String HEADER;
+    /**
+     * Text above Tablist
+     **/
     public String FOOTER;
+
+    /**
+     * Text behind Tablist
+     **/
+
 
     @Override
     public void onEnable() {
@@ -35,7 +45,14 @@ public final class AnotherTablistPlugin extends JavaPlugin {
                 run();
             }, 0, 20);
         }
+        initCommands();
+        PluginDescriptionFile pdf = this.getDescription();
+        Vars.PuginVer = pdf.getVersion();
         getLogger().info("AnotherTablistPlugin is enabled.");
+    }
+
+    private void initCommands() {
+        getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
     }
 
     private void run() {
