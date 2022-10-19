@@ -48,7 +48,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         initCommands();
         PluginDescriptionFile pdf = this.getDescription();
         Vars.PuginVer = pdf.getVersion();
-        getLogger().info("AnotherTablistPlugin is enabled.");
+        getLogger().info("AnotherTablistPlugin " + Vars.PuginVer + "is enabled.");
     }
 
     private void initCommands() {
