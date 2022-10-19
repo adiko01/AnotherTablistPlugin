@@ -33,6 +33,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
                 run();
             }, 0, 20);
         }
+        getLogger().info("AnotherTablistPlugin is enabeld.");
     }
     private void run() {
         Tablist.SetTablist();
@@ -56,5 +57,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        getLogger().info("AnotherTablistPlugin is disabeld.");
     }
 }
