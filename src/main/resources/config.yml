@@ -1,0 +1,36 @@
+# # # # # # # # # # # # # # # # # # # #
+#                                     #
+#         AnotherTablistPlugin        #
+#              by adiko01             #
+#                                     #
+# # # # # # # # # # # # # # # # # # # #
+
+
+header: "&aAnother&4Tablist&aPlugin\n &1Welcome to &6Server.com\n{date} {time2}"
+footer: "&6Check out our website  >> &aexample.com\n&6Online: {players}"
+
+# English manuel below
+
+# Unter header kann der Text für über der Tablist eingetragen werden
+# Unter footer der ext für drunter
+# Benutze die normalen Minecraft Farbcodes (https://minecraft.fandom.com/de/wiki/Formatierungscodes#Farbcodes)
+# Benutze \n für einen Zeilenumbruch
+# Platzhalter
+# {players} - Anzahl Spieler
+# {date} - Aktuelles Datum
+# {weekday} - Aktueller Wochentag
+# {month} - Aktueller Monat
+# {time} - Aktuelle Uhrzeit (HH:MM)
+# {time2} - Aktuelle Uhrzeit (HH:MM:SS)
+
+# Under header the text for above the tablist can be entered
+# Under footer the ext for below
+# Use the normal Minecraft color codes
+# Use \n for a line break
+# placeholder
+# {players} - Count of online player
+# {date} - Current date
+# {weekday} - Current day of the week
+# {month} - Current month
+# {time} - Current time (HH:MM)
+# {time2} - Current time (HH:MM:SS)

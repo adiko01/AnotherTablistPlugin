@@ -1,0 +1,6 @@
+name: AnotherTablistPlugin
+version: '${project.version}'
+main: de.adiko01.anothertablistplugin.AnotherTablistPlugin
+api-version: 1.19
+authors: [ adiko01 ]
+website: https://github.com/adiko01
