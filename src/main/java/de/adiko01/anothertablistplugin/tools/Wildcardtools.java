@@ -2,7 +2,7 @@ package de.adiko01.anothertablistplugin.tools;
 
 import org.bukkit.Bukkit;
 
-public class EditString {
+public class Wildcardtools {
 
     public static String withoutParam(String str) {
         return str
@@ -24,18 +24,19 @@ public class EditString {
                 .replace("{Month}", TimeTool.getMonth()
                 );
     }
-    public static Boolean ContainsTime (String str) {
+
+    public static Boolean ContainsTime(String str) {
         if (
                 str.contains("{time}") ||
-                str.contains("{TIME}") ||
-                str.contains("{time2}") ||
-                str.contains("{TIME2}") ||
-                str.contains("{date}") ||
-                str.contains("{DATE}") ||
-                str.contains("{weekday}") ||
-                str.contains("{WEEKDAY}") ||
-                str.contains("{month}") ||
-                str.contains("{MONTH}")
+                        str.contains("{TIME}") ||
+                        str.contains("{time2}") ||
+                        str.contains("{TIME2}") ||
+                        str.contains("{date}") ||
+                        str.contains("{DATE}") ||
+                        str.contains("{weekday}") ||
+                        str.contains("{WEEKDAY}") ||
+                        str.contains("{month}") ||
+                        str.contains("{MONTH}")
         ) {
             return true;
 

@@ -1,7 +1,7 @@
 package de.adiko01.anothertablistplugin;
 
-import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
+import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
-import static de.adiko01.anothertablistplugin.tools.EditString.ContainsTime;
+import static de.adiko01.anothertablistplugin.tools.Wildcardtools.ContainsTime;
 
 public final class AnotherTablistPlugin extends JavaPlugin {
 
@@ -37,6 +37,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         }
         getLogger().info("AnotherTablistPlugin is enabeld.");
     }
+
     private void run() {
         Tablist.SetTablist();
     }
