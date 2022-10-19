@@ -35,7 +35,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
                 run();
             }, 0, 20);
         }
-        getLogger().info("AnotherTablistPlugin is enabeld.");
+        getLogger().info("AnotherTablistPlugin is enabled.");
     }
 
     private void run() {
@@ -45,6 +45,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     private void createCustomConfig() {
         File customConfigFile = new File(getDataFolder(), "config.yml");
         if (!customConfigFile.exists()) {
+            //noinspection ResultOfMethodCallIgnored
             customConfigFile.getParentFile().mkdirs();
             saveResource("config.yml", false);
         }
@@ -60,6 +61,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getLogger().info("AnotherTablistPlugin is disabeld.");
+        getLogger().info("AnotherTablistPlugin is disabled.");
     }
 }
