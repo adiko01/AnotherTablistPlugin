@@ -24,4 +24,23 @@ public class EditString {
                 .replace("{Month}", TimeTool.getMonth()
                 );
     }
+    public static Boolean ContainsTime (String str) {
+        if (
+                str.contains("{time}") ||
+                str.contains("{TIME}") ||
+                str.contains("{time2}") ||
+                str.contains("{TIME2}") ||
+                str.contains("{date}") ||
+                str.contains("{DATE}") ||
+                str.contains("{weekday}") ||
+                str.contains("{WEEKDAY}") ||
+                str.contains("{month}") ||
+                str.contains("{MONTH}")
+        ) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
 }

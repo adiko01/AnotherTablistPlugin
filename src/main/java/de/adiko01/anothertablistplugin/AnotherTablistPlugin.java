@@ -11,6 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
+import static de.adiko01.anothertablistplugin.tools.EditString.ContainsTime;
+
 public final class AnotherTablistPlugin extends JavaPlugin {
 
 
@@ -28,7 +30,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         saveDefaultConfig();
         HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
         FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
-        if (HEADER.contains("{time}") || (HEADER.contains("{seconds}") || (HEADER.contains("{date}")) || (HEADER.contains("{weekday}")) || (HEADER.contains("{month}")) ||FOOTER.contains("{time}") || (FOOTER.contains("{seconds}") || (FOOTER.contains("{date}")) || (FOOTER.contains("{weekday}")) || (FOOTER.contains("{month}"))))) {
+        if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
                 run();
             }, 0, 20);
