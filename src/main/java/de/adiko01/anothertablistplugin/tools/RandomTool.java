@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class RandomTool {
     public static String getRandom () {
+        //ToDo Einstellung ermöglichen ob Sekündlich wechsel oder Minütlich wechselnd des Random
         Random ran = new Random();
         int i = ran.nextInt(5);
         return Vars.RANDOM[i];
