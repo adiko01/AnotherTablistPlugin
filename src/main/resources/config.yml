@@ -15,9 +15,8 @@
 # Wiki:            https://github.com/adiko01/AnotherTablistPlugin/wiki
 # Bugtracker:      https://github.com/adiko01/AnotherTablistPlugin/issues
 
-
-header: "&aAnother&4Tablist&aPlugin\n &1Welcome to &aexample.com\n {weekday} {date} {time2}"
-footer: "&6Check out our website  >> &aexample.com\n&6Online: {players} of {max-players} Players \n The motd: {motd}"
+header: "&4Another&6Tablist&4Plugin\n &aWelcome to &aexample.com\n &7{weekday} {date} {time2}"
+footer: "&aOnline: {players} of {max-players} players\n The MOTD: &6{motd}"
 
 
 # Unter header kann der Text für über der Tablist eingetragen werden
