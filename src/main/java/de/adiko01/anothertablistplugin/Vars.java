@@ -35,7 +35,7 @@ public class Vars {
      * Setter
      */
 
-    public static void setRefTicks (int i) {
+    public static void setRefTicks(int i) {
         if (RefTicks == 0 || RefTicks > i) {
             RefTicks = i;
         } else {

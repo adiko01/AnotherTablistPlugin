@@ -1,10 +1,5 @@
 package de.adiko01.anothertablistplugin.tools;
 
-import de.adiko01.anothertablistplugin.AnotherTablistPlugin;
-import de.adiko01.anothertablistplugin.Tablist;
-import de.adiko01.anothertablistplugin.Vars;
-import org.bukkit.Bukkit;
-
 import java.util.Random;
 
 import static de.adiko01.anothertablistplugin.Vars.setRefTicks;
@@ -23,7 +18,6 @@ public class RandomTool {
      * Wich String is choosen
      */
     private static int MagicNumber;
-
 
 
     public static void setRandomType(String type) {
@@ -45,9 +39,11 @@ public class RandomTool {
             RandScheduer = 24000;
         }
     }
-    public static String getRandom () {
+
+    public static String getRandom() {
         return RANDOM[MagicNumber];
     }
+
     public static void setRandom() {
         Random ran = new Random();
         MagicNumber = ran.nextInt(iForRandom);

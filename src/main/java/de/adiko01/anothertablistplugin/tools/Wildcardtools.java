@@ -26,6 +26,7 @@ public class Wildcardtools {
                 .replace("{RANDOM}", RandomTool.getRandom()
                 );
     }
+
     public static Boolean ContainsTime(String str) {
         if (
                 str.contains("{time}") ||
@@ -45,6 +46,7 @@ public class Wildcardtools {
             return false;
         }
     }
+
     public static Boolean ContainsRandom(String str) {
         if (str.contains("{RANDOM") || str.contains("{random")) {
             return true;

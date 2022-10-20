@@ -4,7 +4,6 @@ import de.adiko01.anothertablistplugin.commands.AboudCommand;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import de.adiko01.anothertablistplugin.tools.RandomTool;
-import de.adiko01.anothertablistplugin.tools.Wildcardtools;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -61,6 +60,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
     private void initVars() {
         PluginDescriptionFile pdf = this.getDescription();
         Vars.PluginVer = pdf.getVersion();
@@ -77,6 +77,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         RandomTool.RANDOM[4] = AnotherTablistPlugin.instance.getConfig().getString("random4");
         RandomTool.RANDOM[5] = AnotherTablistPlugin.instance.getConfig().getString("random5");
     }
+
     private void initCommands() {
         getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
     }
@@ -86,7 +87,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
     }
 
-    private void setScheduer () {
+    private void setScheduer() {
         if (Vars.RefTicks > 0) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, this::run, 0, Vars.RefTicks);
         } else {
