@@ -17,18 +17,7 @@ import static de.adiko01.anothertablistplugin.tools.Wildcardtools.ContainsTime;
 
 public final class AnotherTablistPlugin extends JavaPlugin {
 
-
     public static AnotherTablistPlugin instance;
-    public String HEADER;
-    /**
-     * Text above Tablist
-     **/
-    public String FOOTER;
-
-    /**
-     * Text behind Tablist
-     **/
-
 
     @Override
     public void onEnable() {
@@ -36,9 +25,9 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         instance = this;
         createCustomConfig();
         saveDefaultConfig();
-        HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
-        FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
-        if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
+        Vars.HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
+        Vars.FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
+        if (ContainsTime(Vars.HEADER) || ContainsTime(Vars.FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
                 run();
             }, 0, 20);
