@@ -1,16 +1,23 @@
-# # # # # # # # # # # # # # # # # # # #
-#                                     #
-#         AnotherTablistPlugin        #
-#              by adiko01             #
-#                                     #
-# # # # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#                                                           #
+#                                                           #
+#                    AnotherTablistPlugin                   #
+#                         by adiko01                        #
+#                                                           #
+#                    This Project is on:                    #
+#      https://github.com/adiko01/AnotherTablistPlugin      #
+#   https://dev.bukkit.org/projects/anothertablistplugin    #
+#                                                           #
+#                                                           #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Important Links
+# Wiki:            https://github.com/adiko01/AnotherTablistPlugin/wiki
+# Bugtracker:      https://github.com/adiko01/AnotherTablistPlugin/issues
 
 
 header: "&aAnother&4Tablist&aPlugin\n &1Welcome to &aexample.com\n {weekday} {date} {time2}"
 footer: "&6Check out our website  >> &aexample.com\n&6Online: {players} of {max-players} Players \n The motd: {motd}"
-
-# Wiki  https://github.com/adiko01/AnotherTablistPlugin/wiki
-
 
 
 # Unter header kann der Text für über der Tablist eingetragen werden
