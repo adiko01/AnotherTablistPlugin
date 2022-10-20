@@ -21,7 +21,9 @@ public class Wildcardtools {
                 .replace("{weekday}", TimeTool.getWeekDay())
                 .replace("{WEEKDAY}", TimeTool.getWeekDay())
                 .replace("{month}", TimeTool.getMonth())
-                .replace("{Month}", TimeTool.getMonth()
+                .replace("{Month}", TimeTool.getMonth())
+                .replace("{random}", RandomTool.getRandom())
+                .replace("{RANDOM}", RandomTool.getRandom()
                 );
     }
 

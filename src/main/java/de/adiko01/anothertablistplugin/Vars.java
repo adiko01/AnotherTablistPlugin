@@ -17,5 +17,6 @@ public class Vars {
      **/
     public static String FOOTER;
 
-
+    // The Random Strings
+    public static final String[] RANDOM = new String[100];
 }

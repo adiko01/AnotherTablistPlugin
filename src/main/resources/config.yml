@@ -18,6 +18,15 @@
 header: "&4Another&6Tablist&4Plugin\n &aWelcome to &aexample.com\n &7{weekday} {date} {time2}"
 footer: "&aOnline: {players} of {max-players} players\n The MOTD: &6{motd}"
 
+# Ersetzt die Wildcard {random} oder {RANDOM} mit einem dieser Strings (Maximal nur 5 Strings)
+# Replaces the Wildcard {random} or {RANDOM} with one of these strings (Maximal only 5 Strings)
+
+random0: ""
+random1: ""
+random2: ""
+random3: ""
+random4: ""
+random5: ""
 
 # Unter header kann der Text für über der Tablist eingetragen werden
 # Unter footer der Text für drunter

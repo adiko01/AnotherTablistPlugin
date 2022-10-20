@@ -25,8 +25,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         instance = this;
         createCustomConfig();
         saveDefaultConfig();
-        Vars.HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
-        Vars.FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
+        initVars();
         if (ContainsTime(Vars.HEADER) || ContainsTime(Vars.FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
                 run();
@@ -37,15 +36,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         PluginDescriptionFile pdf = this.getDescription();
         Vars.PuginVer = pdf.getVersion();
         getLogger().info("AnotherTablistPlugin " + Vars.PuginVer + "is enabled.");
-    }
-
-    private void initCommands() {
-        getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
-    }
-
-    private void initEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
-        getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
     }
 
     private void run() {
@@ -66,6 +56,26 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
+    }
+    private static void initVars() {
+        Vars.HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
+        Vars.FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
+
+        //ToDo Move this into a foreach loop
+        Vars.RANDOM[0] = AnotherTablistPlugin.instance.getConfig().getString("random0");
+        Vars.RANDOM[1] = AnotherTablistPlugin.instance.getConfig().getString("random1");
+        Vars.RANDOM[2] = AnotherTablistPlugin.instance.getConfig().getString("random2");
+        Vars.RANDOM[3] = AnotherTablistPlugin.instance.getConfig().getString("random3");
+        Vars.RANDOM[4] = AnotherTablistPlugin.instance.getConfig().getString("random4");
+        Vars.RANDOM[5] = AnotherTablistPlugin.instance.getConfig().getString("random5");
+    }
+    private void initCommands() {
+        getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
+    }
+
+    private void initEvents() {
+        getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
+        getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
     }
 
     @Override
