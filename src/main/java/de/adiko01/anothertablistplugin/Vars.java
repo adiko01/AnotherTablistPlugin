@@ -7,7 +7,7 @@ public class Vars {
      **/
 
     /**
-     * plugin's version
+     * Plugin's version
      **/
     public static String PluginVer;
 
@@ -21,8 +21,25 @@ public class Vars {
      **/
     public static String FOOTER;
 
-    // Counter for the Random strings
-    public static int iForRandom;
-    // The Random Strings
-    public static final String[] RANDOM = new String[100];
+    /**
+     * Refresh the Tablist in Ticks
+     */
+    public static int RefTicks = 0;
+
+    /**
+     * Getter
+     */
+
+
+    /**
+     * Setter
+     */
+
+    public static void setRefTicks (int i) {
+        if (RefTicks == 0 || RefTicks > i) {
+            RefTicks = i;
+        } else {
+            //Nothing happen here
+        }
+    }
 }

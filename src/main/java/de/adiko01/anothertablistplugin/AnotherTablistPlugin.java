@@ -3,6 +3,8 @@ package de.adiko01.anothertablistplugin;
 import de.adiko01.anothertablistplugin.commands.AboudCommand;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
+import de.adiko01.anothertablistplugin.tools.RandomTool;
+import de.adiko01.anothertablistplugin.tools.Wildcardtools;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,6 +15,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
+import static de.adiko01.anothertablistplugin.Vars.setRefTicks;
+import static de.adiko01.anothertablistplugin.tools.Wildcardtools.ContainsRandom;
 import static de.adiko01.anothertablistplugin.tools.Wildcardtools.ContainsTime;
 
 public final class AnotherTablistPlugin extends JavaPlugin {
@@ -26,13 +30,15 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         createCustomConfig();
         saveDefaultConfig();
         initVars();
-        if (ContainsTime(Vars.HEADER) || ContainsTime(Vars.FOOTER)) {
-            Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
-                run();
-            }, 0, 20);
-        }
         initCommands();
         initEvents();
+        if (ContainsRandom(Vars.HEADER) || ContainsRandom(Vars.FOOTER)) {
+            RandomTool.setRandomType(AnotherTablistPlugin.instance.getConfig().getString("randomtype"));
+        }
+        if (ContainsTime(Vars.HEADER) || ContainsTime(Vars.FOOTER)) {
+            setRefTicks(20);
+        }
+        setScheduer();
         getLogger().info("AnotherTablistPlugin " + Vars.PluginVer + "is enabled.");
     }
 
@@ -63,13 +69,13 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         Vars.FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
 
         //ToDo Move this into a foreach loop
-        Vars.iForRandom = 5;
-        Vars.RANDOM[0] = AnotherTablistPlugin.instance.getConfig().getString("random0");
-        Vars.RANDOM[1] = AnotherTablistPlugin.instance.getConfig().getString("random1");
-        Vars.RANDOM[2] = AnotherTablistPlugin.instance.getConfig().getString("random2");
-        Vars.RANDOM[3] = AnotherTablistPlugin.instance.getConfig().getString("random3");
-        Vars.RANDOM[4] = AnotherTablistPlugin.instance.getConfig().getString("random4");
-        Vars.RANDOM[5] = AnotherTablistPlugin.instance.getConfig().getString("random5");
+        RandomTool.iForRandom = 5;
+        RandomTool.RANDOM[0] = AnotherTablistPlugin.instance.getConfig().getString("random0");
+        RandomTool.RANDOM[1] = AnotherTablistPlugin.instance.getConfig().getString("random1");
+        RandomTool.RANDOM[2] = AnotherTablistPlugin.instance.getConfig().getString("random2");
+        RandomTool.RANDOM[3] = AnotherTablistPlugin.instance.getConfig().getString("random3");
+        RandomTool.RANDOM[4] = AnotherTablistPlugin.instance.getConfig().getString("random4");
+        RandomTool.RANDOM[5] = AnotherTablistPlugin.instance.getConfig().getString("random5");
     }
     private void initCommands() {
         getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
@@ -78,6 +84,17 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     private void initEvents() {
         getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
+    }
+
+    private void setScheduer () {
+        if (Vars.RefTicks > 0) {
+            Bukkit.getScheduler().runTaskTimerAsynchronously(this, this::run, 0, Vars.RefTicks);
+        } else {
+            //Nothing happens here
+        }
+        if (RandomTool.RandScheduer > 0) {
+            Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> RandomTool.setRandom(), 0, RandomTool.RandScheduer);
+        }
     }
 
     @Override

@@ -18,6 +18,16 @@
 header: "&4Another&6Tablist&4Plugin\n &aWelcome to &aexample.com\n &7{weekday} {date} {time2}"
 footer: "&aOnline: {players} of {max-players} players\n The MOTD: &6{motd}"
 
+# Typ des Zufualls
+# Typ of Random
+# s -> Sekunde (Echtzeit) -- second (realtime)
+# m -> Minute (Echtzeit) -- minute (realtime)
+# h -> Stunde (Echtzeit) -- hour (realtime)
+# d -> Tag (Echtzeit) -- day (realtime)
+# md -> Minecraft Tag (20 Minuten) -- minecraft day (20 minutes)
+
+randomtype: md
+
 # Ersetzt die Wildcard {random} oder {RANDOM} mit einem dieser Strings (Maximal nur 5 Strings)
 # Replaces the Wildcard {random} or {RANDOM} with one of these strings (Maximal only 5 Strings)
 
