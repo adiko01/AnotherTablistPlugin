@@ -8,9 +8,7 @@ import org.bukkit.command.CommandSender;
 public class AboudCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-
-
-        commandSender.sendMessage("AnotherTablistPlugin - Version " + Vars.PuginVer);
+        commandSender.sendMessage("AnotherTablistPlugin - Version " + Vars.PluginVer);
         return false;
     }
 }

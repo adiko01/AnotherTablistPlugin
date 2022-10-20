@@ -8,7 +8,7 @@ public class RandomTool {
     public static String getRandom () {
         //ToDo Einstellung ermöglichen ob Sekündlich wechsel oder Minütlich wechselnd des Random
         Random ran = new Random();
-        int i = ran.nextInt(5);
+        int i = ran.nextInt(Vars.iForRandom);
         return Vars.RANDOM[i];
     }
 }

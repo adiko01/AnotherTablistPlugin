@@ -33,9 +33,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         }
         initCommands();
         initEvents();
-        PluginDescriptionFile pdf = this.getDescription();
-        Vars.PuginVer = pdf.getVersion();
-        getLogger().info("AnotherTablistPlugin " + Vars.PuginVer + "is enabled.");
+        getLogger().info("AnotherTablistPlugin " + Vars.PluginVer + "is enabled.");
     }
 
     private void run() {
@@ -57,11 +55,15 @@ public final class AnotherTablistPlugin extends JavaPlugin {
             e.printStackTrace();
         }
     }
-    private static void initVars() {
+    private void initVars() {
+        PluginDescriptionFile pdf = this.getDescription();
+        Vars.PluginVer = pdf.getVersion();
+
         Vars.HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
         Vars.FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
 
         //ToDo Move this into a foreach loop
+        Vars.iForRandom = 5;
         Vars.RANDOM[0] = AnotherTablistPlugin.instance.getConfig().getString("random0");
         Vars.RANDOM[1] = AnotherTablistPlugin.instance.getConfig().getString("random1");
         Vars.RANDOM[2] = AnotherTablistPlugin.instance.getConfig().getString("random2");

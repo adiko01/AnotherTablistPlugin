@@ -5,7 +5,11 @@ public class Vars {
     /**
      * About the Plugin
      **/
-    public static String PuginVer; /** plugin's version **/
+
+    /**
+     * plugin's version
+     **/
+    public static String PluginVer;
 
     /**
      * Text above Tablist
@@ -17,6 +21,8 @@ public class Vars {
      **/
     public static String FOOTER;
 
+    // Counter for the Random strings
+    public static int iForRandom;
     // The Random Strings
     public static final String[] RANDOM = new String[100];
 }
