@@ -34,8 +34,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-        getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
-        getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
         createCustomConfig();
         saveDefaultConfig();
         HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
@@ -46,6 +44,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
             }, 0, 20);
         }
         initCommands();
+        initEvents();
         PluginDescriptionFile pdf = this.getDescription();
         Vars.PuginVer = pdf.getVersion();
         getLogger().info("AnotherTablistPlugin " + Vars.PuginVer + "is enabled.");
@@ -53,6 +52,11 @@ public final class AnotherTablistPlugin extends JavaPlugin {
 
     private void initCommands() {
         getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
+    }
+
+    private void initEvents() {
+        getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
+        getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
     }
 
     private void run() {
