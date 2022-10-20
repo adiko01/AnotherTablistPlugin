@@ -33,7 +33,7 @@ footer: "&6Check out our website  >> &aexample.com\n&6Online: {players} of {max-
 # Wildcard -- German -- English
 # {players} -- Anzahl Spieler -- Count of online player
 # {max-players} -- Maximale Anzahl der Spieler -- Count of maximal possible players
-# {motd} -- Zeigt die MOTD -- Schows the MOTD
+# {motd} -- Zeigt die MOTD -- Shows the MOTD
 # {date} -- Aktuelles Datum -- Current date
 # {weekday} -- Aktueller Wochentag -- Current day of the week
 # {month} -- Aktueller Monat -- Current month
