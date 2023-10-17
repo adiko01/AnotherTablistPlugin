@@ -15,8 +15,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
-import static de.adiko01.anothertablistplugin.tools.Wildcardtools.ContainsTime;
-import static de.adiko01.anothertablistplugin.tools.Wildcardtools.withoutParam;
+import static de.adiko01.anothertablistplugin.tools.Wildcard.ContainsTime;
+import static de.adiko01.anothertablistplugin.tools.Wildcard.parseNONStaticWildcards;
+import static de.adiko01.anothertablistplugin.tools.Wildcard.parseStaticWildcards;
 
 public final class AnotherTablistPlugin extends JavaPlugin {
 
@@ -45,6 +46,10 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         saveDefaultConfig();
         HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
         FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
+
+        HEADER = parseStaticWildcards(HEADER);
+        FOOTER = parseStaticWildcards(FOOTER);
+
         if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
                 SetTablist();
@@ -85,8 +90,8 @@ public final class AnotherTablistPlugin extends JavaPlugin {
 
     public static void SetTablist() {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.setPlayerListHeader(ChatColor.translateAlternateColorCodes('&',withoutParam(AnotherTablistPlugin.instance.HEADER)));
-            player.setPlayerListFooter(ChatColor.translateAlternateColorCodes('&', withoutParam(AnotherTablistPlugin.instance.FOOTER)));
+            player.setPlayerListHeader(ChatColor.translateAlternateColorCodes('&',parseNONStaticWildcards(AnotherTablistPlugin.instance.HEADER)));
+            player.setPlayerListFooter(ChatColor.translateAlternateColorCodes('&', parseNONStaticWildcards(AnotherTablistPlugin.instance.FOOTER)));
         }
     }
 
