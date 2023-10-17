@@ -1,6 +1,6 @@
 package de.adiko01.anothertablistplugin;
 
-import de.adiko01.anothertablistplugin.commands.AboudCommand;
+import de.adiko01.anothertablistplugin.commands.About;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import org.bukkit.Bukkit;
@@ -51,7 +51,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     }
 
     private void initCommands() {
-        getCommand("AnotherTablistPlugin").setExecutor(new AboudCommand());
+        getCommand("AnotherTablistPlugin").setExecutor(new About());
     }
 
     private void initEvents() {
