@@ -31,7 +31,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     public String FOOTER;
 
     /** Die Version **/
-    public String Version;
+    public static String Version;
 
 
     @Override
