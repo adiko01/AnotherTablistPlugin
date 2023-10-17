@@ -10,7 +10,13 @@ public class About implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
 
-        commandSender.sendMessage("AnotherTablistPlugin - Version " + AnotherTablistPlugin.Version);
+        commandSender.sendMessage("AnotherTablistPlugin - Version "
+                        + AnotherTablistPlugin.Version + "\n"
+                        + "GitHub: §4§nhttps://github.com/adiko01/AnotherTablistPlugin§r\n"
+                        + "Wiki: §4§nhttps://github.com/adiko01/AnotherTablistPlugin/wiki§r\n"
+                        + "Bugtracker: §4§nhttps://github.com/adiko01/AnotherTablistPlugin/issues§r\n"
+                        + "Bukkit: §4§nhttps://dev.bukkit.org/projects/anothertablistplugin§r\n"
+        );
         return false;
     }
 }
