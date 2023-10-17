@@ -63,7 +63,11 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     }
 
     private void initCommands() {
-        getCommand("AnotherTablistPlugin").setExecutor(new About());
+        try {
+            getCommand("AnotherTablistPlugin").setExecutor(new About());
+        } catch (NullPointerException e) {
+            getLogger().warning("ERROR: " + e.getMessage());
+        }
     }
 
     private void initEvents() {
@@ -84,7 +88,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         try {
             customConfig.load(customConfigFile);
         } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
+            getLogger().warning("ERROR: Kann die Konfiguration nicht laden! \n ERROR: " + e.getMessage());
         }
     }
 
