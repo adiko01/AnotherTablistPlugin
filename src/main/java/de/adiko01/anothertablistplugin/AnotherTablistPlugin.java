@@ -47,7 +47,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
         if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
-                run();
+                SetTablist();
             }, 0, 20);
         }
         initCommands();
@@ -66,9 +66,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
     }
 
-    private void run() {
-        SetTablist();
-    }
 
     private void createCustomConfig() {
         File customConfigFile = new File(getDataFolder(), "config.yml");
