@@ -19,15 +19,19 @@ public final class AnotherTablistPlugin extends JavaPlugin {
 
 
     public static AnotherTablistPlugin instance;
-    public String HEADER;
+
     /**
      * Text above Tablist
      **/
-    public String FOOTER;
+    public String HEADER;
 
     /**
      * Text behind Tablist
      **/
+    public String FOOTER;
+
+    /** Die Version **/
+    public String Version;
 
 
     @Override
@@ -46,8 +50,8 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         initCommands();
         initEvents();
         PluginDescriptionFile pdf = this.getDescription();
-        Vars.PuginVer = pdf.getVersion();
-        getLogger().info("AnotherTablistPlugin " + Vars.PuginVer + "is enabled.");
+        Version = pdf.getVersion();
+        getLogger().info("AnotherTablistPlugin " + Version + "is enabled.");
     }
 
     private void initCommands() {
