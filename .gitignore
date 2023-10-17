@@ -1,5 +1,6 @@
 # User-specific stuff
-.idea/
+# I want to save my .idea dir
+#.idea/
 
 *.iml
 *.ipr
