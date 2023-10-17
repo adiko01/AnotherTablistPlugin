@@ -4,9 +4,11 @@ import de.adiko01.anothertablistplugin.commands.About;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static de.adiko01.anothertablistplugin.tools.Wildcardtools.ContainsTime;
+import static de.adiko01.anothertablistplugin.tools.Wildcardtools.withoutParam;
 
 public final class AnotherTablistPlugin extends JavaPlugin {
 
@@ -64,7 +67,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     }
 
     private void run() {
-        Tablist.SetTablist();
+        SetTablist();
     }
 
     private void createCustomConfig() {
@@ -80,6 +83,13 @@ public final class AnotherTablistPlugin extends JavaPlugin {
             customConfig.load(customConfigFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void SetTablist() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.setPlayerListHeader(ChatColor.translateAlternateColorCodes('&',withoutParam(AnotherTablistPlugin.instance.HEADER)));
+            player.setPlayerListFooter(ChatColor.translateAlternateColorCodes('&', withoutParam(AnotherTablistPlugin.instance.FOOTER)));
         }
     }
 
