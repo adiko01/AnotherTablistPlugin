@@ -44,7 +44,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!(p.hasPermission("atp.about") || p.hasPermission("atp.bug"))) {
-                        getPermError(CommandSender, "atp.about" + ChatColor.RESET + " or " + ChatColor.BLUE + "atp.bug");
+                        getPermError(CommandSender, "atp.about" + ChatColor.RED + " or " + ChatColor.BLUE + "atp.bug");
                         return false;
                     }
                 }
