@@ -16,7 +16,7 @@ public class ATP implements CommandExecutor , TabCompleter {
     public boolean onCommand(CommandSender CommandSender, Command command, String s, String[] args) {
         boolean showHELP = false;
 
-        if (args.length <= 0 || args.length >= 2) {
+        if (args.length != 1) {
             //Prüfe, ob zu viele oder zu wenige Parameter übergeben wurden
             showHELP = true;
         } else {
@@ -72,28 +72,26 @@ public class ATP implements CommandExecutor , TabCompleter {
                     }
                 }
             }
+        }
 
-            if (showHELP) {
-                //Prüfe, ob der Spieler atp.help besitzt
-                if (CommandSender instanceof Player) {
-                    Player p = (Player) CommandSender;
-                    if (!p.hasPermission("atp.help")) {
-                        getPermError(CommandSender, "atp.help");
-                        return false;
-                    }
+        if (showHELP) {
+            //Prüfe, ob der Spieler atp.help besitzt
+            if (CommandSender instanceof Player) {
+                Player p = (Player) CommandSender;
+                if (!p.hasPermission("atp.help")) {
+                    getPermError(CommandSender, "atp.help");
+                    return false;
                 }
-
-                CommandSender.sendMessage(
-                        ChatColor.YELLOW +"--------- Help: /atp ----------------------------" + "\n"
-                                + ChatColor.GOLD + "Description:" + ChatColor.RESET + " Below is a list of all /atp commands:" + "\n"
-                                + ChatColor.GOLD + "/atp about :" + ChatColor.RESET + " Displays information about the plugin." + "\n"
-                                + ChatColor.GOLD + "/atp bug :" + ChatColor.RESET + " Displays the link to the BugTracker." + "\n"
-                                + ChatColor.GOLD + "/atp help :" + ChatColor.RESET + " Displays this page." + "\n"
-                                + ChatColor.GOLD + "/atp reload :" + ChatColor.RESET + " Reloads the plugin." + "\n"
-                );
-                return false;
             }
 
+            CommandSender.sendMessage(
+                    ChatColor.YELLOW +"--------- Help: /atp ----------------------------" + "\n"
+                            + ChatColor.GOLD + "Description:" + ChatColor.RESET + " Below is a list of all /atp commands:" + "\n"
+                            + ChatColor.GOLD + "/atp about :" + ChatColor.RESET + " Displays information about the plugin." + "\n"
+                            + ChatColor.GOLD + "/atp bug :" + ChatColor.RESET + " Displays the link to the BugTracker." + "\n"
+                            + ChatColor.GOLD + "/atp help :" + ChatColor.RESET + " Displays this page." + "\n"
+                            + ChatColor.GOLD + "/atp reload :" + ChatColor.RESET + " Reloads the plugin." + "\n"
+            );
             return false;
         }
 
