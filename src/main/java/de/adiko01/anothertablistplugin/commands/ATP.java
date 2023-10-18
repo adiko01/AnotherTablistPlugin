@@ -26,7 +26,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!p.hasPermission("atp.about")) {
-                        getPermError("atp.about");
+                        getPermError(CommandSender, "atp.about");
                         return false;
                     }
                 }
@@ -44,7 +44,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!(p.hasPermission("atp.about") || p.hasPermission("atp.bug"))) {
-                        getPermError("atp.about" + ChatColor.RESET + " or " + ChatColor.BLUE + "atp.bug");
+                        getPermError(CommandSender, "atp.about" + ChatColor.RESET + " or " + ChatColor.BLUE + "atp.bug");
                         return false;
                     }
                 }
@@ -61,7 +61,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!p.hasPermission("atp.reload")) {
-                        getPermError("atp.reload");
+                        getPermError(CommandSender, "atp.reload");
                         return false;
                     }
                     AnotherTablistPlugin.instance.reloadConfig();
@@ -78,7 +78,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!p.hasPermission("atp.help")) {
-                        getPermError("atp.help");
+                        getPermError(CommandSender, "atp.help");
                         return false;
                     }
                 }
@@ -134,7 +134,7 @@ public class ATP implements CommandExecutor , TabCompleter {
         return Ret;
     }
 
-    private void getPermError (String permission) {
+    private void getPermError (CommandSender CommandSender, String permission) {
         CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + permission + ChatColor.RESET);
 
     }
