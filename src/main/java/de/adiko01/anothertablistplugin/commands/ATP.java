@@ -7,13 +7,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ATP implements CommandExecutor , TabCompleter {
     @Override
-    public boolean onCommand(CommandSender CommandSender, Command command, String s, String[] args) {
+    public boolean onCommand(@NotNull CommandSender CommandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
         boolean showHELP = false;
 
         if (args.length != 1) {
@@ -99,11 +100,11 @@ public class ATP implements CommandExecutor , TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender CommandSender, Command command, String s, String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender CommandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         Player p = (Player) CommandSender;
 
         //Liste aller für den Spieler erlaubten Befehle
-        ArrayList<String> Erlaubt = new ArrayList<String>();
+        ArrayList<String> Erlaubt = new ArrayList<>();
 
         if (p.hasPermission("atp.about")) {
             Erlaubt.add("about");
@@ -119,7 +120,7 @@ public class ATP implements CommandExecutor , TabCompleter {
         }
 
         //Liste, welche zurückgegeben werden soll
-        ArrayList<String> Ret = new ArrayList<String>();
+        ArrayList<String> Ret = new ArrayList<>();
         //Aktueller Snippet des Arg
         String CurrentCommand = args[args.length-1];
 
