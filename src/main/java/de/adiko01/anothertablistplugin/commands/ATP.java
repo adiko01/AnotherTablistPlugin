@@ -17,7 +17,7 @@ public class ATP implements CommandExecutor , TabCompleter {
 
         //Prüfe, ob zu viele oder zu wenige Parameter übergeben wurden
         if (args.length <= 0 || args.length >= 2) {
-            CommandSender.sendMessage(ChatColor.RED + "Ussage " + ChatColor.BLUE + "\\atp <about>" + ChatColor.RESET);
+            CommandSender.sendMessage(ChatColor.RED + "Ussage " + ChatColor.BLUE + "\\atp <about | bug | reload>" + ChatColor.RESET);
             return false;
         }
 
@@ -54,6 +54,23 @@ public class ATP implements CommandExecutor , TabCompleter {
                     + "Bugtracker: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/issues" + ChatColor.RESET + "\n"
             );
             return false;
+        } else if (args[0].equalsIgnoreCase("reload")) {
+            //Prüfe, ob der Spieler atp.about besitzt
+            if (CommandSender instanceof Player) {
+                Player p = (Player) CommandSender;
+                if (!p.hasPermission("atp.reload")) {
+                    CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                    return false;
+                }
+                AnotherTablistPlugin.instance.reloadConfig();
+                if (AnotherTablistPlugin.instance.loadConf()) {
+                    CommandSender.sendMessage(ChatColor.GREEN + "AnotherTablistPlugin has reloaded the Conf!");
+                } else {
+                    CommandSender.sendMessage(ChatColor.RED + "AnotherTablistPlugin: Error when trying to reload the configuration!");
+                }
+            }
+
+            return false;
         }
 
         return false;
@@ -68,6 +85,12 @@ public class ATP implements CommandExecutor , TabCompleter {
 
         if (p.hasPermission("atp.about") || p.hasPermission("atp.*")) {
             Erlaubt.add("about");
+        }
+        if (p.hasPermission("atp.bug") || p.hasPermission("atp.about")) {
+            Erlaubt.add("bug");
+        }
+        if (p.hasPermission("atp.reload")) {
+            Erlaubt.add("reload");
         }
 
         //Liste, welche zurückgegeben werden soll

@@ -44,11 +44,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         instance = this;
         createCustomConfig();
         saveDefaultConfig();
-        HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
-        FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
-
-        HEADER = parseStaticWildcards(HEADER);
-        FOOTER = parseStaticWildcards(FOOTER);
+        loadConf();
 
         if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
@@ -60,6 +56,15 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         PluginDescriptionFile pdf = this.getDescription();
         Version = pdf.getVersion();
         getLogger().info("AnotherTablistPlugin " + Version + "is enabled.");
+    }
+
+    public boolean loadConf () {
+        HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
+        FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
+
+        HEADER = parseStaticWildcards(HEADER);
+        FOOTER = parseStaticWildcards(FOOTER);
+        return true;
     }
 
     private void initCommands() {
