@@ -26,7 +26,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!p.hasPermission("atp.about")) {
-                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                        getPermError("atp.about");
                         return false;
                     }
                 }
@@ -43,8 +43,8 @@ public class ATP implements CommandExecutor , TabCompleter {
                 //Prüfe, ob der Spieler atp.about besitzt
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
-                    if (!p.hasPermission("atp.about")) {
-                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                    if (!(p.hasPermission("atp.about") || p.hasPermission("atp.bug"))) {
+                        getPermError("atp.about" + ChatColor.RESET + " or " + ChatColor.BLUE + "atp.bug");
                         return false;
                     }
                 }
@@ -61,7 +61,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!p.hasPermission("atp.reload")) {
-                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                        getPermError("atp.reload");
                         return false;
                     }
                     AnotherTablistPlugin.instance.reloadConfig();
@@ -78,7 +78,7 @@ public class ATP implements CommandExecutor , TabCompleter {
                 if (CommandSender instanceof Player) {
                     Player p = (Player) CommandSender;
                     if (!p.hasPermission("atp.help")) {
-                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.help" + ChatColor.RESET);
+                        getPermError("atp.help");
                         return false;
                     }
                 }
@@ -132,5 +132,10 @@ public class ATP implements CommandExecutor , TabCompleter {
         }
 
         return Ret;
+    }
+
+    private void getPermError (String permission) {
+        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + permission + ChatColor.RESET);
+
     }
 }
