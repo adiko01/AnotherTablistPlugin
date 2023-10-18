@@ -54,6 +54,25 @@ public class ATP implements CommandExecutor , TabCompleter {
                     + "Bugtracker: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/issues" + ChatColor.RESET + "\n"
             );
             return false;
+        } else if (args[0].equalsIgnoreCase("help")) {
+            //Prüfe, ob der Spieler atp.about besitzt
+            if (CommandSender instanceof Player) {
+                Player p = (Player) CommandSender;
+                if (!p.hasPermission("atp.help")) {
+                    CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.help" + ChatColor.RESET);
+                    return false;
+                }
+            }
+
+            CommandSender.sendMessage(
+                    ChatColor.YELLOW +"--------- Help: /atp ----------------------------" + "\n"
+                        + ChatColor.GOLD + "Description:" + ChatColor.RESET + " Below is a list of all /atp commands:" + "\n"
+                        + ChatColor.GOLD + "/atp about :" + ChatColor.RESET + " Displays information about the plugin." + "\n"
+                        + ChatColor.GOLD + "/atp bug :" + ChatColor.RESET + " Displays the link to the BugTracker." + "\n"
+                        + ChatColor.GOLD + "/atp help :" + ChatColor.RESET + " Displays this page." + "\n"
+                        + ChatColor.GOLD + "/atp reload :" + ChatColor.RESET + " Reloads the plugin." + "\n"
+            );
+            return false;
         } else if (args[0].equalsIgnoreCase("reload")) {
             //Prüfe, ob der Spieler atp.about besitzt
             if (CommandSender instanceof Player) {
@@ -88,6 +107,9 @@ public class ATP implements CommandExecutor , TabCompleter {
         }
         if (p.hasPermission("atp.bug") || p.hasPermission("atp.about")) {
             Erlaubt.add("bug");
+        }
+        if (p.hasPermission("atp.help")) {
+            Erlaubt.add("help");
         }
         if (p.hasPermission("atp.reload")) {
             Erlaubt.add("reload");
