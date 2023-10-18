@@ -14,79 +14,84 @@ import java.util.List;
 public class ATP implements CommandExecutor , TabCompleter {
     @Override
     public boolean onCommand(CommandSender CommandSender, Command command, String s, String[] args) {
+        boolean showHELP = false;
 
-        //Prüfe, ob zu viele oder zu wenige Parameter übergeben wurden
         if (args.length <= 0 || args.length >= 2) {
-            CommandSender.sendMessage(ChatColor.RED + "Ussage " + ChatColor.BLUE + "\\atp <about | bug | reload>" + ChatColor.RESET);
-            return false;
-        }
+            //Prüfe, ob zu viele oder zu wenige Parameter übergeben wurden
+            showHELP = true;
+        } else {
+            //Anzahl Argumente stimmt
+            if (args[0].equalsIgnoreCase("about")) {
+                //Prüfe, ob der Spieler atp.about besitzt
+                if (CommandSender instanceof Player) {
+                    Player p = (Player) CommandSender;
+                    if (!p.hasPermission("atp.about")) {
+                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                        return false;
+                    }
+                }
 
-        if (args[0].equalsIgnoreCase("about")) {
-            //Prüfe, ob der Spieler atp.about besitzt
-            if (CommandSender instanceof Player) {
-                Player p = (Player) CommandSender;
-                if (!p.hasPermission("atp.about")) {
-                    CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
-                    return false;
+                CommandSender.sendMessage("AnotherTablistPlugin - Version "
+                        + AnotherTablistPlugin.Version + "\n"
+                        + "GitHub: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin" + ChatColor.RESET + "\n"
+                        + "Wiki: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/wiki" + ChatColor.RESET + "\n"
+                        + "Bugtracker: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/issues" + ChatColor.RESET + "\n"
+                        + "Bukkit: " + ChatColor.RED + ChatColor.UNDERLINE + "https://dev.bukkit.org/projects/anothertablistplugin" + ChatColor.RESET + "\n"
+                );
+                return false;
+            } else if (args[0].equalsIgnoreCase("bug")) {
+                //Prüfe, ob der Spieler atp.about besitzt
+                if (CommandSender instanceof Player) {
+                    Player p = (Player) CommandSender;
+                    if (!p.hasPermission("atp.about")) {
+                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                        return false;
+                    }
+                }
+
+                CommandSender.sendMessage("AnotherTablistPlugin - Version "
+                        + AnotherTablistPlugin.Version + "\n"
+                        + "Bugtracker: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/issues" + ChatColor.RESET + "\n"
+                );
+                return false;
+            } else if (args[0].equalsIgnoreCase("help")) {
+                showHELP = true;
+            } else if (args[0].equalsIgnoreCase("reload")) {
+                //Prüfe, ob der Spieler atp.about besitzt
+                if (CommandSender instanceof Player) {
+                    Player p = (Player) CommandSender;
+                    if (!p.hasPermission("atp.reload")) {
+                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
+                        return false;
+                    }
+                    AnotherTablistPlugin.instance.reloadConfig();
+                    if (AnotherTablistPlugin.instance.loadConf()) {
+                        CommandSender.sendMessage(ChatColor.GREEN + "AnotherTablistPlugin has reloaded the Conf!");
+                    } else {
+                        CommandSender.sendMessage(ChatColor.RED + "AnotherTablistPlugin: Error when trying to reload the configuration!");
+                    }
                 }
             }
 
-            CommandSender.sendMessage("AnotherTablistPlugin - Version "
-                    + AnotherTablistPlugin.Version + "\n"
-                    + "GitHub: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin" + ChatColor.RESET + "\n"
-                    + "Wiki: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/wiki" + ChatColor.RESET + "\n"
-                    + "Bugtracker: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/issues" + ChatColor.RESET + "\n"
-                    + "Bukkit: " + ChatColor.RED + ChatColor.UNDERLINE + "https://dev.bukkit.org/projects/anothertablistplugin" + ChatColor.RESET + "\n"
-            );
-            return false;
-        } else if (args[0].equalsIgnoreCase("bug")) {
-            //Prüfe, ob der Spieler atp.about besitzt
-            if (CommandSender instanceof Player) {
-                Player p = (Player) CommandSender;
-                if (!p.hasPermission("atp.about")) {
-                    CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
-                    return false;
+            if (showHELP) {
+                //Prüfe, ob der Spieler atp.help besitzt
+                if (CommandSender instanceof Player) {
+                    Player p = (Player) CommandSender;
+                    if (!p.hasPermission("atp.help")) {
+                        CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.help" + ChatColor.RESET);
+                        return false;
+                    }
                 }
-            }
 
-            CommandSender.sendMessage("AnotherTablistPlugin - Version "
-                    + AnotherTablistPlugin.Version + "\n"
-                    + "Bugtracker: " + ChatColor.RED + ChatColor.UNDERLINE + "https://github.com/adiko01/AnotherTablistPlugin/issues" + ChatColor.RESET + "\n"
-            );
-            return false;
-        } else if (args[0].equalsIgnoreCase("help")) {
-            //Prüfe, ob der Spieler atp.about besitzt
-            if (CommandSender instanceof Player) {
-                Player p = (Player) CommandSender;
-                if (!p.hasPermission("atp.help")) {
-                    CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.help" + ChatColor.RESET);
-                    return false;
-                }
-            }
-
-            CommandSender.sendMessage(
-                    ChatColor.YELLOW +"--------- Help: /atp ----------------------------" + "\n"
-                        + ChatColor.GOLD + "Description:" + ChatColor.RESET + " Below is a list of all /atp commands:" + "\n"
-                        + ChatColor.GOLD + "/atp about :" + ChatColor.RESET + " Displays information about the plugin." + "\n"
-                        + ChatColor.GOLD + "/atp bug :" + ChatColor.RESET + " Displays the link to the BugTracker." + "\n"
-                        + ChatColor.GOLD + "/atp help :" + ChatColor.RESET + " Displays this page." + "\n"
-                        + ChatColor.GOLD + "/atp reload :" + ChatColor.RESET + " Reloads the plugin." + "\n"
-            );
-            return false;
-        } else if (args[0].equalsIgnoreCase("reload")) {
-            //Prüfe, ob der Spieler atp.about besitzt
-            if (CommandSender instanceof Player) {
-                Player p = (Player) CommandSender;
-                if (!p.hasPermission("atp.reload")) {
-                    CommandSender.sendMessage(ChatColor.RED + "This is not allowed! - You need " + ChatColor.BLUE + "atp.about" + ChatColor.RESET);
-                    return false;
-                }
-                AnotherTablistPlugin.instance.reloadConfig();
-                if (AnotherTablistPlugin.instance.loadConf()) {
-                    CommandSender.sendMessage(ChatColor.GREEN + "AnotherTablistPlugin has reloaded the Conf!");
-                } else {
-                    CommandSender.sendMessage(ChatColor.RED + "AnotherTablistPlugin: Error when trying to reload the configuration!");
-                }
+                CommandSender.sendMessage(
+                        ChatColor.YELLOW +"--------- Help: /atp ----------------------------" + "\n"
+                                + ChatColor.GOLD + "Description:" + ChatColor.RESET + " Below is a list of all /atp commands:" + "\n"
+                                + ChatColor.GOLD + "/atp about :" + ChatColor.RESET + " Displays information about the plugin." + "\n"
+                                + ChatColor.GOLD + "/atp bug :" + ChatColor.RESET + " Displays the link to the BugTracker." + "\n"
+                                + ChatColor.GOLD + "/atp help :" + ChatColor.RESET + " Displays this page." + "\n"
+                                + ChatColor.GOLD + "/atp reload :" + ChatColor.RESET + " Reloads the plugin." + "\n"
+                );
+                return false;
             }
 
             return false;
