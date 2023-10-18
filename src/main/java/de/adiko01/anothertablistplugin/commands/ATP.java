@@ -83,7 +83,7 @@ public class ATP implements CommandExecutor , TabCompleter {
         //Liste aller für den Spieler erlaubten Befehle
         ArrayList<String> Erlaubt = new ArrayList<String>();
 
-        if (p.hasPermission("atp.about") || p.hasPermission("atp.*")) {
+        if (p.hasPermission("atp.about")) {
             Erlaubt.add("about");
         }
         if (p.hasPermission("atp.bug") || p.hasPermission("atp.about")) {
