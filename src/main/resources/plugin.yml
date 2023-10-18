@@ -6,7 +6,7 @@ authors: [ adiko01 ]
 website: https://github.com/adiko01
 commands:
   atp:
-    description: Displays the Plugin Name and Version
+    description: Commands for this Plugin
     permission: AnotherTablistPlugin.about
     permission-message: You do not have /<permission>
 permissions:
