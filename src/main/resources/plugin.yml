@@ -5,12 +5,18 @@ api-version: 1.19
 authors: [ adiko01 ]
 website: https://github.com/adiko01
 commands:
-  AnotherTablistPlugin:
-    description: Displays the Plugin Name and Version
-    aliases: atp
-    permission: AnotherTablistPlugin.about
-    permission-message: You do not have /<permission>
+  atp:
+    description: Commands for this Plugin.
 permissions:
-  AnotherTablistPlugin.about:
-    description: Allows /atp
+  atp.about:
+    description: Allows /atp about and /atp bug
+    default: op
+  atp.bug:
+    description: Allows /atp bug
+    default: op
+  atp.help:
+    description: Allows /atp help
+    default: op
+  atp.reload:
+    description: Allows /atp reload
     default: op

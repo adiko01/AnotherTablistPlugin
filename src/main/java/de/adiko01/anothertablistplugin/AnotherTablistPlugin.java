@@ -1,6 +1,6 @@
 package de.adiko01.anothertablistplugin;
 
-import de.adiko01.anothertablistplugin.commands.About;
+import de.adiko01.anothertablistplugin.commands.ATP;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import org.bukkit.Bukkit;
@@ -19,6 +19,10 @@ import static de.adiko01.anothertablistplugin.tools.Wildcard.ContainsTime;
 import static de.adiko01.anothertablistplugin.tools.Wildcard.parseNONStaticWildcards;
 import static de.adiko01.anothertablistplugin.tools.Wildcard.parseStaticWildcards;
 
+/**Main Class
+ * @author adiko01
+ * @version 1.1.6
+ */
 public final class AnotherTablistPlugin extends JavaPlugin {
 
 
@@ -26,15 +30,20 @@ public final class AnotherTablistPlugin extends JavaPlugin {
 
     /**
      * Text above Tablist
+     * @since 1.0.0
      **/
     public String HEADER;
 
     /**
      * Text behind Tablist
+     * @since 1.0.0
      **/
     public String FOOTER;
 
-    /** Die Version **/
+    /**
+     * Die Version
+     * @since 1.0.0
+     **/
     public static String Version;
 
 
@@ -42,13 +51,22 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+
+        //Config Operationen
         createCustomConfig();
         saveDefaultConfig();
-        HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
-        FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
 
-        HEADER = parseStaticWildcards(HEADER);
-        FOOTER = parseStaticWildcards(FOOTER);
+        /*
+         * Kompatiblität zu pre 1.1.6 Versionen
+         * Erstelle Version: 1 in der Config
+         */
+        if (!getConfig().contains("Version")) {
+            getConfig().set("Version", 1);
+        }
+        saveConfig();
+        loadConf();
+
+
 
         if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
@@ -62,9 +80,23 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         getLogger().info("AnotherTablistPlugin " + Version + "is enabled.");
     }
 
+    /**Lädt die Daten der aus der Config
+     * @return true wenn erfolgreich - false wenn nicht
+     * @since 1.0.0
+     */
+    public boolean loadConf () {
+        HEADER = getConfig().getString("header");
+        FOOTER = getConfig().getString("footer");
+
+        HEADER = parseStaticWildcards(HEADER);
+        FOOTER = parseStaticWildcards(FOOTER);
+        return true;
+    }
+
     private void initCommands() {
         try {
-            getCommand("AnotherTablistPlugin").setExecutor(new About());
+            getCommand("atp").setExecutor(new ATP());
+            //getCommand("AnotherTablistPlugin").setExecutor(new About());
         } catch (NullPointerException e) {
             getLogger().warning("ERROR: " + e.getMessage());
         }

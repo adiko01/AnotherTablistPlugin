@@ -15,6 +15,7 @@
 # Wiki:            https://github.com/adiko01/AnotherTablistPlugin/wiki
 # Bugtracker:      https://github.com/adiko01/AnotherTablistPlugin/issues
 
+Version: 1
 
 header: "&aAnother&4Tablist&aPlugin\n &1Welcome to &aexample.com\n {weekday} {date} {time2}"
 footer: "&6Check out our website  >> &aexample.com\n&6Online: {players} of {max-players} Players \n The motd: {motd}"

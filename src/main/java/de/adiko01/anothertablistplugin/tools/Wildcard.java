@@ -1,6 +1,7 @@
 package de.adiko01.anothertablistplugin.tools;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,8 +23,8 @@ public class Wildcard {
         return str
                 .replace("{max-players}", String.valueOf(Bukkit.getMaxPlayers()))
                 .replace("{MAX-PLAYERS}", String.valueOf(Bukkit.getMaxPlayers()))
-                .replace("{motd}", String.valueOf(Bukkit.getMotd()))
-                .replace("{MOTD}", String.valueOf(Bukkit.getMotd()))
+                .replace("{motd}", ChatColor.RESET + String.valueOf(Bukkit.getMotd() + ChatColor.RESET))
+                .replace("{MOTD}", ChatColor.RESET + String.valueOf(Bukkit.getMotd() + ChatColor.RESET))
         ;
     }
 
