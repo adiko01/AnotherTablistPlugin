@@ -19,6 +19,10 @@ import static de.adiko01.anothertablistplugin.tools.Wildcard.ContainsTime;
 import static de.adiko01.anothertablistplugin.tools.Wildcard.parseNONStaticWildcards;
 import static de.adiko01.anothertablistplugin.tools.Wildcard.parseStaticWildcards;
 
+/**Main Class
+ * @author adiko01
+ * @version 1.1.6
+ */
 public final class AnotherTablistPlugin extends JavaPlugin {
 
 
@@ -26,15 +30,20 @@ public final class AnotherTablistPlugin extends JavaPlugin {
 
     /**
      * Text above Tablist
+     * @since 1.0.0
      **/
     public String HEADER;
 
     /**
      * Text behind Tablist
+     * @since 1.0.0
      **/
     public String FOOTER;
 
-    /** Die Version **/
+    /**
+     * Die Version
+     * @since 1.0.0
+     **/
     public static String Version;
 
 
@@ -47,11 +56,13 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         createCustomConfig();
         saveDefaultConfig();
 
-        //Kompatiblität zu pre 1.1.6 Versionen
+        /*
+         * Kompatiblität zu pre 1.1.6 Versionen
+         * Erstelle Version: 1 in der Config
+         */
         if (!getConfig().contains("Version")) {
             getConfig().set("Version", 1);
         }
-
         saveConfig();
         loadConf();
 
@@ -69,9 +80,13 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         getLogger().info("AnotherTablistPlugin " + Version + "is enabled.");
     }
 
+    /**Lädt die Daten der aus der Config
+     * @return true wenn erfolgreich - false wenn nicht
+     * @since 1.0.0
+     */
     public boolean loadConf () {
-        HEADER = AnotherTablistPlugin.instance.getConfig().getString("header");
-        FOOTER = AnotherTablistPlugin.instance.getConfig().getString("footer");
+        HEADER = getConfig().getString("header");
+        FOOTER = getConfig().getString("footer");
 
         HEADER = parseStaticWildcards(HEADER);
         FOOTER = parseStaticWildcards(FOOTER);
