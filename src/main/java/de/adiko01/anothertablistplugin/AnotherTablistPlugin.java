@@ -42,9 +42,20 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+
+        //Config Operationen
         createCustomConfig();
         saveDefaultConfig();
+
+        //Kompatiblität zu pre 1.1.6 Versionen
+        if (!getConfig().contains("Version")) {
+            getConfig().set("Version", 1);
+        }
+
+        saveConfig();
         loadConf();
+
+
 
         if (ContainsTime(HEADER) || ContainsTime(FOOTER)) {
             Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
