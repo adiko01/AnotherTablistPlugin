@@ -85,6 +85,12 @@ public final class AnotherTablistPlugin extends JavaPlugin {
      * @since 1.0.0
      */
     public boolean loadConf () {
+
+        if (getConfig().getInt("Version") > 1) {
+            getLogger().warning("Die Konfigurationsdatei wurde fuer eine neurere Version dieses Plugins erstellt.");
+            getLogger().warning("The configuration file was created for a newer version of this plugin.");
+        }
+
         HEADER = getConfig().getString("header");
         FOOTER = getConfig().getString("footer");
 
