@@ -1,6 +1,7 @@
 package de.adiko01.anothertablistplugin;
 
 import de.adiko01.anothertablistplugin.commands.ATP;
+import de.adiko01.anothertablistplugin.commands.ATP_CONSOLE;
 import de.adiko01.anothertablistplugin.events.PlayerJoinEvent;
 import de.adiko01.anothertablistplugin.events.PlayerLeaveEvent;
 import org.bukkit.Bukkit;
@@ -102,7 +103,7 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     private void initCommands() {
         try {
             getCommand("atp").setExecutor(new ATP());
-            //getCommand("AnotherTablistPlugin").setExecutor(new About());
+            getCommand("atp-console").setExecutor(new ATP_CONSOLE());
         } catch (NullPointerException e) {
             getLogger().warning("ERROR: " + e.getMessage());
         }

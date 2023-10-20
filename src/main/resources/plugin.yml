@@ -6,7 +6,9 @@ authors: [ adiko01 ]
 website: https://github.com/adiko01
 commands:
   atp:
-    description: Commands for this Plugin.
+    description: Commands for this plugin.
+  atp-console:
+    description: Console commands for this plugin.
 permissions:
   atp.about:
     description: Allows /atp about and /atp bug
