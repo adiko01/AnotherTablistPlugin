@@ -101,32 +101,34 @@ public class ATP implements CommandExecutor , TabCompleter {
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender CommandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        Player p = (Player) CommandSender;
-
-        //Liste aller für den Spieler erlaubten Befehle
-        ArrayList<String> Erlaubt = new ArrayList<>();
-
-        if (p.hasPermission("atp.about")) {
-            Erlaubt.add("about");
-        }
-        if (p.hasPermission("atp.bug") || p.hasPermission("atp.about")) {
-            Erlaubt.add("bug");
-        }
-        if (p.hasPermission("atp.help")) {
-            Erlaubt.add("help");
-        }
-        if (p.hasPermission("atp.reload")) {
-            Erlaubt.add("reload");
-        }
+        //Liste aller Argumente des Commmand
+        String[][] Commands = {
+                //command snippet , permission
+                {"about" , "atp.about"},
+                {"help" , "atp.help"},
+                {"bug" , "atp.about"},
+                {"bug" , "atp.bug"},
+                {"reload" , "atp.reload"}
+        };
 
         //Liste, welche zurückgegeben werden soll
         ArrayList<String> Ret = new ArrayList<>();
         //Aktueller Snippet des Arg
         String CurrentCommand = args[args.length-1];
 
-        for (String MCom : Erlaubt) {
-            if (MCom.startsWith(CurrentCommand)) {
-                Ret.add(MCom);
+        Player p;
+        if (CommandSender instanceof Player) {
+            p = (Player) CommandSender;
+        } else {
+            p = null;
+        }
+
+        for (String MCom[] : Commands) {
+            if (MCom[0].startsWith(CurrentCommand)) {
+                if ((p != null) && !p.hasPermission(MCom[1])) {
+                    continue;
+                }
+                Ret.add(MCom[0]);
             }
         }
 
