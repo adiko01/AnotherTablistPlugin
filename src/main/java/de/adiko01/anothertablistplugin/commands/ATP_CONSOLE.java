@@ -30,6 +30,8 @@ public class ATP_CONSOLE implements CommandExecutor , TabCompleter {
 
             if (args[0].equalsIgnoreCase("config-cleanup")) {
                 //TODO MAKE This Happen
+                CommandSender.sendMessage(ChatColor.RED + "Der Befehl wurde noch nicht implementiert!");
+                getLogger().warning("Der Befehl /atp-console config-cleanup wurde noch nicht implementiert");
             } else if (args[0].equalsIgnoreCase("help")) {
                 showHELP = true;
             }
