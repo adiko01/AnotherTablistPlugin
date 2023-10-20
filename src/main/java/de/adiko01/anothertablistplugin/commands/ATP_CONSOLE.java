@@ -51,9 +51,7 @@ public class ATP_CONSOLE implements CommandExecutor , TabCompleter {
 
     @Override
     public List<String> onTabComplete(@NotNull CommandSender CommandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        Player p = (Player) CommandSender;
-
-        //Liste aller für den Spieler erlaubten Befehle
+        //Liste aller Befehle
         ArrayList<String> Erlaubt = new ArrayList<>();
 
         Erlaubt.add("config-cleanup");
