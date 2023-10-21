@@ -15,11 +15,10 @@
 # Wiki:            https://github.com/adiko01/AnotherTablistPlugin/wiki
 # Bugtracker:      https://github.com/adiko01/AnotherTablistPlugin/issues
 
-Version: 1
+Version: 2
 
 header: "&aAnother&4Tablist&aPlugin\n &1Welcome to &aexample.com\n {weekday} {date} {time2}"
 footer: "&6Check out our website  >> &aexample.com\n&6Online: {players} of {max-players} Players \n The motd: {motd}"
-
 
 # Unter header kann der Text für über der Tablist eingetragen werden
 # Unter footer der Text für drunter
@@ -40,3 +39,8 @@ footer: "&6Check out our website  >> &aexample.com\n&6Online: {players} of {max-
 # {month} -- Aktueller Monat -- Current month
 # {time} -- Aktuelle Uhrzeit (HH:MM) -- Current time (HH:MM)
 # {time2} -- Aktuelle Uhrzeit (HH:MM:SS) -- Current time (HH:MM:SS)
+
+# Sollen Prefix oder Suffix in der Spielerliste angezeigt werden
+# Should the Prefix or Suffix be shown in the PlayerList
+prefix: true
+suffix: true
