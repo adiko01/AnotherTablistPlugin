@@ -54,7 +54,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
         instance = this;
 
         //Config Operationen
-        createCustomConfig();
         saveDefaultConfig();
 
         /*
@@ -112,23 +111,6 @@ public final class AnotherTablistPlugin extends JavaPlugin {
     private void initEvents() {
         getServer().getPluginManager().registerEvents(new PlayerJoinEvent(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeaveEvent(), this);
-    }
-
-
-    private void createCustomConfig() {
-        File customConfigFile = new File(getDataFolder(), "config.yml");
-        if (!customConfigFile.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            customConfigFile.getParentFile().mkdirs();
-            saveResource("config.yml", false);
-        }
-
-        FileConfiguration customConfig = new YamlConfiguration();
-        try {
-            customConfig.load(customConfigFile);
-        } catch (IOException | InvalidConfigurationException e) {
-            getLogger().warning("ERROR: Kann die Konfiguration nicht laden! \n ERROR: " + e.getMessage());
-        }
     }
 
     public static void SetTablist() {
